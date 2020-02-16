@@ -6,18 +6,38 @@ Library                     Seleniumlibrary
 Test Setup                  Begin Web Test
 Test Teardown               End Web Test
 
+*** Variables ***
+${BROWSER}        chrome
+${URL}            http://www.amazon.com
+${SEARCH_TERM}    ferrari 458
+
 *** Keywords ***
 Begin Web Test
-        Open Browser                about:blank  chrome
+        Open Browser                about:blank     ${BROWSER}
 
 Go to Web Page
-        Go To                       https://www.amazon.com
+        Load Page
+        Verify Page Loaded
+
+Load Page
+        Go To                       ${URL}
+
+Verify Page Loaded
         Wait Until Page Contains    Your Amazon.com
 
 Search for Product
-        Input Text                  id=twotabsearchtextbox      ferrari 458
+        Enter Search Term
+        Submit Search
+        Verify Search Completed
+
+Enter Search Term
+        Input Text                  id=twotabsearchtextbox      ${SEARCH_TERM}
+
+Submit Search
         Click Button                xpath://*[@id="nav-search"]/form/div[2]/div/input
-        Wait Until Page Contains   results for "ferrari 458"
+
+Verify Search Completed
+        Wait Until Page Contains    results for "ferrari 458"
 
 End Web Test
         Close Browser
