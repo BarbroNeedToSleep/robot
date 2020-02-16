@@ -1,6 +1,10 @@
 *** Settings ***
 Documentation   this is some basic info about the whole test suite
 Library  SeleniumLibrary
+Documentation               This is some basic info aboout the test
+Library                     Seleniumlibrary
+Test Setup                  Begin Web Test
+Test Teardown               End Web Test
 
 *** Keywords ***
 Begin Web Test
@@ -20,13 +24,17 @@ End Web Test
 
 *** Test Cases ***
 User can access amazon.com
-    [Documentation]             This is sme basic info aboout the test
-    [Tags]                      Test 1
-    Begin Web Test
 
+    [Documentation]             This is some basic info aboout the test
+    [Tags]                      Test 1
     Go to Web Page
 
+User can conduct a search
+
+    [Documentation]             This is some basic info aboout the test
+    [Tags]                      Test 2
+    Go to Web Page
     Search for Product
 
-    End Web Test
+
 
