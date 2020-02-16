@@ -1,0 +1,6 @@
+[0216/205535.492:ERROR:process_reader_win.cc(151)] SuspendThread: Åtkomst nekad. (0x5)
+[0216/205535.493:ERROR:exception_snapshot_win.cc(98)] thread ID 1268 not found in process
+[0216/211140.560:ERROR:process_reader_win.cc(151)] SuspendThread: Åtkomst nekad. (0x5)
+[0216/211140.561:ERROR:process_reader_win.cc(151)] SuspendThread: Åtkomst nekad. (0x5)
+[0216/211140.561:ERROR:process_reader_win.cc(151)] SuspendThread: Åtkomst nekad. (0x5)
+[0216/211140.561:ERROR:exception_snapshot_win.cc(98)] thread ID 10744 not found in process
