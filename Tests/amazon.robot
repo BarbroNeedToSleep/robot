@@ -9,7 +9,7 @@ Test Teardown               End Web Test
 *** Variables ***
 ${BROWSER}        chrome
 ${URL}            http://www.amazon.com
-${SEARCH_TERM}    ferrari 458
+
 
 *** Keywords ***
 Begin Web Test
@@ -26,18 +26,21 @@ Verify Page Loaded
         Wait Until Page Contains    Your Amazon.com
 
 Search for Product
-        Enter Search Term
+        [Arguments]                 ${search_term}  ${search_result}
+        Enter Search Term           ${search_term}
         Submit Search
-        Verify Search Completed
+        Verify Search Completed     ${search_result}
 
 Enter Search Term
-        Input Text                  id=twotabsearchtextbox      ${SEARCH_TERM}
+        [Arguments]                 ${search_term}
+        Input Text                  id=twotabsearchtextbox      ${search_term}
 
 Submit Search
         Click Button                xpath://*[@id="nav-search"]/form/div[2]/div/input
 
 Verify Search Completed
-        Wait Until Page Contains    results for "ferrari 458"
+        [Arguments]                 ${search_result}
+        Wait Until Page Contains    ${search_result}
 
 End Web Test
         Close Browser
@@ -49,12 +52,16 @@ User can access amazon.com
     [Tags]                      Test 1
     Go to Web Page
 
-User can conduct a search
+User can conduct search
 
     [Documentation]             This is some basic info aboout the test
     [Tags]                      Test 2
     Go to Web Page
-    Search for Product
+    Search for Product          ferrari 458         results for "ferrari 458"
 
+User can conduct another search
 
-
+    [Documentation]             This is some basic info aboout the test
+    [Tags]                      Test 3
+    Go to Web Page
+    Search for Product          tesla model x        results for "tesla model x"
